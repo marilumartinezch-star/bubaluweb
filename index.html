@@ -30,7 +30,7 @@
             padding-top: 120px;
         }
 
-        /* Header Dinámico */
+        /* Header Dinámico y Barra de Navegación */
         header {
             position: fixed;
             top: 20px;
@@ -40,7 +40,7 @@
             max-width: 1100px;
             background: var(--glass);
             backdrop-filter: blur(16px);
-            padding: 18px 40px;
+            padding: 14px 40px;
             border-radius: 100px;
             display: flex;
             justify-content: space-between;
@@ -65,6 +65,66 @@
             transform: scale(1.05);
         }
 
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--dark-purple);
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--bubble-pink);
+        }
+
+        /* Menú Desplegable (Dropdown) */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #FFF0F4;
+            min-width: 180px;
+            box-shadow: 0 12px 32px rgba(74, 38, 77, 0.15);
+            z-index: 1000;
+            border-radius: 24px;
+            padding: 12px 0;
+            top: 150%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 1px solid rgba(255, 133, 162, 0.3);
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: var(--dark-purple);
+            padding: 10px 20px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .dropdown-content a:hover {
+            background-color: rgba(255, 133, 162, 0.2);
+            color: var(--bubble-pink);
+        }
+
         .nav-icons {
             display: flex;
             gap: 28px;
@@ -82,11 +142,29 @@
             align-items: center;
             justify-content: center;
             border: 1px solid rgba(255, 133, 162, 0.2);
+            position: relative;
         }
 
         .nav-icon:hover {
             transform: scale(1.15) rotate(5deg);
             background: #FFEDF2;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--bubble-pink);
+            color: var(--white);
+            font-size: 0.65rem;
+            font-weight: 800;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         /* Contenedor Principal */
@@ -204,6 +282,8 @@
             font-size: 1.4rem;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            border: none;
         }
 
         .buy-now:hover {
@@ -274,12 +354,119 @@
             font-weight: 800;
             font-size: 0.95rem;
             box-shadow: 0 4px 15px rgba(255, 133, 162, 0.15);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, background-color 0.3s;
             cursor: pointer;
+            border: none;
         }
 
-        .device-badge:hover {
+        .device-badge:hover, .device-badge.active {
             transform: translateY(-4px);
+            background: var(--bubble-pink);
+            color: var(--white);
+        }
+
+        /* Enlace de términos y condiciones */
+        .terms-link {
+            display: block;
+            margin-top: 18px;
+            font-size: 0.85rem;
+            color: var(--bubble-pink);
+            text-decoration: underline;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .terms-link:hover {
+            color: var(--dark-purple);
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(74, 38, 77, 0.6);
+            backdrop-filter: blur(8px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-content {
+            background: var(--white);
+            width: 90%;
+            max-width: 650px;
+            padding: 40px;
+            border-radius: 40px;
+            box-shadow: 0 20px 60px rgba(74, 38, 77, 0.2);
+            border: 1px solid rgba(255, 133, 162, 0.3);
+            transform: translateY(30px);
+            transition: transform 0.3s ease;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-header h3 {
+            color: var(--bubble-pink);
+            font-size: 1.6rem;
+            font-weight: 800;
+        }
+
+        .close-btn {
+            background: #FDF4F7;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--bubble-pink);
+            transition: all 0.3s;
+        }
+
+        .close-btn:hover {
+            background: var(--bubble-pink);
+            color: var(--white);
+            transform: rotate(90deg);
+        }
+
+        .modal-body p {
+            font-size: 0.9rem;
+            color: #613C64;
+            margin-bottom: 16px;
+            text-align: left;
+        }
+
+        .modal-body ul {
+            list-style: disc;
+            padding-left: 20px;
+            font-size: 0.9rem;
+            color: #613C64;
+            margin-bottom: 16px;
         }
 
         footer {
@@ -365,6 +552,9 @@
             .large {
                 grid-column: span 2;
             }
+            .nav-links {
+                display: none; /* Simplificado para móviles */
+            }
             .compatibility-grid {
                 flex-direction: column;
                 gap: 28px;
@@ -392,41 +582,59 @@
 
     <header>
         <a href="#" class="logo">bubalu.</a>
+        
+        <nav class="nav-links">
+            <div class="dropdown">
+                <span class="nav-link">Productos ▾</span>
+                <div class="dropdown-content">
+                    <a href="#large">Colección Unisex</a>
+                    <a href="#tall">Puffy Pink</a>
+                    <a href="#popit">Pop It!</a>
+                    <a href="#y2k">Y2K Art</a>
+                </div>
+            </div>
+            <a href="#nosotros" class="nav-link">Nosotros</a>
+            <a href="#contacto" class="nav-link">Contacto</a>
+        </nav>
+
         <div class="nav-icons">
-            <div class="nav-icon">✨</div>
-            <div class="nav-icon">🛒</div>
+            <div class="nav-icon" onclick="showNotification('✨ Bienvenido a Bubalu')">✨</div>
+            <div class="nav-icon" onclick="showNotification('🛒 Carrito vacío, ¡añade tu primer case!')">
+                🛒
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
         </div>
     </header>
 
     <div class="container">
 
-        <div class="bento-item large" style="background-image: linear-gradient(to bottom, rgba(212, 173, 252, 0.3), rgba(74, 38, 77, 0.5)), url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80');">
+        <div class="bento-item large" id="large" style="background-image: linear-gradient(to bottom, rgba(212, 173, 252, 0.3), rgba(74, 38, 77, 0.5)), url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80');">
             <span class="badge">Nuevo Lanzamiento 2026</span>
             <h2>Colección Unisex</h2>
             <p>Cases protectores diseñados para quienes no temen destacar. Estilo y máxima durabilidad para el día a día.</p>
             <div class="price-tag">S/ 49.90</div>
-            <a href="#" class="buy-now">🛍️</a>
+            <button class="buy-now" onclick="addToCart('Colección Unisex', 49.90)">🛍️</button>
         </div>
 
-        <div class="bento-item tall" style="background-image: url('https://images.unsplash.com/photo-1601784551446-20c9e07cd2f7?auto=format&fit=crop&w=600&q=80');">
+        <div class="bento-item tall" id="tall" style="background-image: url('https://images.unsplash.com/photo-1601784551446-20c9e07cd2f7?auto=format&fit=crop&w=600&q=80');">
             <h2>Puffy Pink</h2>
             <p>Suavidad y volumen en un diseño cómodo que protege cada caída.</p>
             <div class="price-tag" style="color: var(--bubble-pink); margin-top: 5px; margin-bottom: 25px;">S/ 54.90</div>
-            <a href="#" class="buy-now">🔥</a>
+            <button class="buy-now" onclick="addToCart('Puffy Pink', 54.90)">🔥</button>
         </div>
 
-        <div class="bento-item" style="background: var(--electric-mint);">
+        <div class="bento-item" id="popit" style="background: var(--electric-mint);">
             <h2 style="color: var(--dark-purple);">Pop It!</h2>
             <p style="color: var(--dark-purple);">Texturas, colores dinámicos y energía urbana para todos.</p>
             <div class="price-tag" style="color: var(--electric-mint); background: var(--dark-purple); margin-bottom: 10px;">S/ 39.90</div>
-            <a href="#" class="buy-now" style="color: var(--electric-mint); background: var(--dark-purple);">✨</a>
+            <button class="buy-now" style="color: var(--electric-mint); background: var(--dark-purple);" onclick="addToCart('Pop It!', 39.90)">✨</button>
         </div>
 
-        <div class="bento-item" style="background: #FFF8FA;">
+        <div class="bento-item" id="y2k" style="background: #FFF8FA;">
             <h2 style="color: var(--dark-purple);">Y2K Art</h2>
             <p style="color: #613C64;">Vibras retro, energía moderna que complementa tu personalidad.</p>
             <div class="price-tag" style="background: var(--soft-purple); color: var(--white); margin-bottom: 10px;">S/ 44.90</div>
-            <a href="#" class="buy-now">🎵</a>
+            <button class="buy-now" onclick="addToCart('Y2K Art', 44.90)">🎵</button>
         </div>
 
         <div class="compatibility-grid">
@@ -435,17 +643,62 @@
                 <p>Encuentra tu estilo protegido en múltiples dispositivos para hombres y mujeres.</p>
             </div>
             <div class="devices">
-                <span class="device-badge">iPhone</span>
-                <span class="device-badge">Samsung</span>
-                <span class="device-badge">Xiaomi</span>
+                <button class="device-badge" onclick="filterDevice('iPhone', this)">iPhone</button>
+                <button class="device-badge" onclick="filterDevice('Samsung', this)">Samsung</button>
+                <button class="device-badge" onclick="filterDevice('Xiaomi', this)">Xiaomi</button>
             </div>
         </div>
 
-        <div class="bento-item wide">
-            <h2 style="color: var(--bubble-pink); margin-bottom: 6px;">Envíos a todo el Perú 🇵🇪</h2>
-            <p style="color: var(--dark-purple); margin-bottom: 0;">Llegamos a tu domicilio en Lima en menos de 24 horas y enviamos a todo el país.</p>
+        <div class="bento-item wide" id="nosotros" style="background: var(--soft-purple); color: var(--white); grid-column: span 2;">
+            <h2 style="color: var(--white); margin-bottom: 6px;">Sobre Nosotros 💖</h2>
+            <p style="color: var(--white); margin-bottom: 0;">En Bubalu nos inspiramos en el estilo de los Millennials y la Gen Z para crear cases únicos, seguros y llenos de energía.</p>
         </div>
 
+        <div class="bento-item wide" id="contacto" style="background: var(--white); border: 2px solid var(--soft-purple); grid-column: span 2; justify-content: flex-end;">
+            <h2 style="color: var(--dark-purple); margin-bottom: 6px;">Contáctanos ✉️</h2>
+            <p style="color: var(--dark-purple); margin-bottom: 0;">¿Dudas sobre tu envío o compatibilidad? Escríbenos directamente y resolvemos todo en minutos.</p>
+            <button class="buy-now" style="background: var(--soft-purple); color: var(--white);" onclick="showNotification('📩 Escríbenos a: hola@bubalu.pe')">📨</button>
+        </div>
+
+        <div class="bento-item wide" style="grid-column: span 4;">
+            <h2 style="color: var(--bubble-pink); margin-bottom: 6px;">Envíos a todo el Perú 🇵🇪</h2>
+            <p style="color: var(--dark-purple); margin-bottom: 0;">Llegamos a tu domicilio en Lima en menos de 24 horas y enviamos a todo el país.</p>
+            <span class="terms-link" onclick="openTermsModal()">Términos y Condiciones</span>
+        </div>
+
+    </div>
+
+    <div class="modal-overlay" id="termsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Términos y Condiciones</h3>
+                <button class="close-btn" onclick="closeTermsModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <p>Bienvenido a Bubalu. Al usar nuestro sitio web y realizar compras, aceptas las siguientes condiciones generales del servicio:</p>
+                
+                <p><strong>1. Alcance de los Productos y Precios</strong></p>
+                <ul>
+                    <li>Los precios de los cases se expresan en Soles (S/.) e incluyen los impuestos aplicables.</li>
+                    <li>Los diseños son unisex, adaptados para complementar cualquier estilo de nuestros clientes (varones y mujeres, Millennials y Gen Z).</li>
+                </ul>
+
+                <p><strong>2. Envíos y Entregas</strong></p>
+                <ul>
+                    <li>Los envíos dentro de Lima se realizan en un plazo máximo de 24 horas tras la confirmación del pedido.</li>
+                    <li>Los envíos a provincias tienen tarifas variables y se gestionan a través de empresas de transporte de confianza.</li>
+                </ul>
+
+                <p><strong>3. Políticas de Devolución</strong></p>
+                <ul>
+                    <li>El cliente dispone de hasta 7 días útiles para solicitar un cambio de case si presenta fallas de fabricación al momento de la entrega.</li>
+                    <li>El producto debe encontrarse en su empaque original y sin señales de uso indebido.</li>
+                </ul>
+
+                <p><strong>4. Protección de Datos</strong></p>
+                <p>Toda información personal recopilada es tratada bajo estrictas normas de confidencialidad para procesar tus pedidos de manera transparente.</p>
+            </div>
+        </div>
     </div>
 
     <footer>
@@ -461,6 +714,45 @@
             </ul>
         </div>
     </footer>
+
+    <script>
+        let cartTotalItems = 0;
+
+        function addToCart(productName, price) {
+            cartTotalItems++;
+            document.getElementById('cartCount').innerText = cartTotalItems;
+            alert(`¡Genial! Añadiste ${productName} a tu carrito de compras. Precio: S/ ${price.toFixed(2)}`);
+        }
+
+        function filterDevice(device, element) {
+            const badges = document.querySelectorAll('.device-badge');
+            badges.forEach(b => b.classList.remove('active'));
+            element.classList.add('active');
+            alert(`Mostrando cases compatibles con ${device}`);
+        }
+
+        function showNotification(message) {
+            alert(message);
+        }
+
+        function openTermsModal() {
+            const modal = document.getElementById('termsModal');
+            modal.classList.add('active');
+        }
+
+        function closeTermsModal() {
+            const modal = document.getElementById('termsModal');
+            modal.classList.remove('active');
+        }
+
+        // Cerrar modal haciendo clic fuera de él
+        window.onclick = function(event) {
+            const modal = document.getElementById('termsModal');
+            if (event.target == modal) {
+                modal.classList.remove('active');
+            }
+        }
+    </script>
 
 </body>
 </html>
