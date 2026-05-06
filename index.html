@@ -27,7 +27,7 @@
             background-color: var(--bg-color);
             color: var(--dark-purple);
             line-height: 1.6;
-            padding-top: 120px;
+            padding-top: 140px;
         }
 
         /* Header Dinámico y Barra de Navegación */
@@ -78,6 +78,8 @@
             font-size: 0.95rem;
             cursor: pointer;
             transition: color 0.3s;
+            background: transparent;
+            border: none;
         }
 
         .nav-link:hover {
@@ -110,17 +112,22 @@
             display: block;
         }
 
-        .dropdown-content a {
+        .dropdown-content button {
             color: var(--dark-purple);
             padding: 10px 20px;
             text-decoration: none;
             display: block;
             font-size: 0.9rem;
             font-weight: 600;
+            background: none;
+            border: none;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
             transition: background 0.3s, color 0.3s;
         }
 
-        .dropdown-content a:hover {
+        .dropdown-content button:hover {
             background-color: rgba(255, 133, 162, 0.2);
             color: var(--bubble-pink);
         }
@@ -167,6 +174,37 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
+        /* Categorías y Filtros */
+        .filter-bar {
+            grid-column: span 4;
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            animation: fadeInUp 0.6s ease-out;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: var(--white);
+            color: var(--dark-purple);
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 133, 162, 0.3);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 15px rgba(212, 173, 252, 0.1);
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--bubble-pink);
+            color: var(--white);
+            transform: translateY(-3px);
+            border-color: var(--bubble-pink);
+        }
+
         /* Contenedor Principal */
         .container {
             max-width: 1100px;
@@ -184,14 +222,27 @@
             padding: 40px;
             position: relative;
             overflow: hidden;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
             border: 1px solid rgba(74, 38, 77, 0.06);
         }
 
-        .bento-item:hover {
+        .bento-item.hidden {
+            opacity: 0;
+            transform: scale(0.9);
+            pointer-events: none;
+            position: absolute;
+            width: 0;
+            height: 0;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+            border: none;
+        }
+
+        .bento-item:hover:not(.hidden) {
             transform: translateY(-8px) scale(1.01);
             box-shadow: 0 24px 60px rgba(212, 173, 252, 0.3);
         }
@@ -365,7 +416,7 @@
             color: var(--white);
         }
 
-        /* Enlace de términos y condiciones */
+        /* Enlaces e interacciones */
         .terms-link {
             display: block;
             margin-top: 18px;
@@ -549,7 +600,7 @@
                 grid-template-columns: repeat(2, 1fr);
                 grid-auto-rows: 220px;
             }
-            .large {
+            .large, .wide {
                 grid-column: span 2;
             }
             .nav-links {
@@ -573,7 +624,7 @@
                 padding: 14px 28px;
             }
             body {
-                padding-top: 100px;
+                padding-top: 130px;
             }
         }
     </style>
@@ -585,12 +636,13 @@
         
         <nav class="nav-links">
             <div class="dropdown">
-                <span class="nav-link">Productos ▾</span>
+                <button class="nav-link">Productos ▾</button>
                 <div class="dropdown-content">
-                    <a href="#large">Colección Unisex</a>
-                    <a href="#tall">Puffy Pink</a>
-                    <a href="#popit">Pop It!</a>
-                    <a href="#y2k">Y2K Art</a>
+                    <button onclick="filterCategory('limited')">Edición Limitada</button>
+                    <button onclick="filterCategory('puffy')">Puffy Cases</button>
+                    <button onclick="filterCategory('popit')">Interactivas</button>
+                    <button onclick="filterCategory('y2k')">Y2K Retro</button>
+                    <button onclick="filterCategory('all')">Ver Todos</button>
                 </div>
             </div>
             <a href="#nosotros" class="nav-link">Nosotros</a>
@@ -608,7 +660,15 @@
 
     <div class="container">
 
-        <div class="bento-item large" id="large" style="background-image: linear-gradient(to bottom, rgba(212, 173, 252, 0.3), rgba(74, 38, 77, 0.5)), url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80');">
+        <div class="filter-bar">
+            <button class="filter-btn active" onclick="filterCategory('all')">Todos los estilos</button>
+            <button class="filter-btn" onclick="filterCategory('limited')">Edición Limitada</button>
+            <button class="filter-btn" onclick="filterCategory('puffy')">Puffy Cases</button>
+            <button class="filter-btn" onclick="filterCategory('popit')">Interactivas</button>
+            <button class="filter-btn" onclick="filterCategory('y2k')">Y2K Retro</button>
+        </div>
+
+        <div class="bento-item large category-limited" id="large" style="background-image: linear-gradient(to bottom, rgba(212, 173, 252, 0.3), rgba(74, 38, 77, 0.5)), url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80');">
             <span class="badge">Nuevo Lanzamiento 2026</span>
             <h2>Colección Unisex</h2>
             <p>Cases protectores diseñados para quienes no temen destacar. Estilo y máxima durabilidad para el día a día.</p>
@@ -616,21 +676,21 @@
             <button class="buy-now" onclick="addToCart('Colección Unisex', 49.90)">🛍️</button>
         </div>
 
-        <div class="bento-item tall" id="tall" style="background-image: url('https://images.unsplash.com/photo-1601784551446-20c9e07cd2f7?auto=format&fit=crop&w=600&q=80');">
+        <div class="bento-item tall category-puffy" id="tall" style="background-image: url('https://images.unsplash.com/photo-1601784551446-20c9e07cd2f7?auto=format&fit=crop&w=600&q=80');">
             <h2>Puffy Pink</h2>
             <p>Suavidad y volumen en un diseño cómodo que protege cada caída.</p>
             <div class="price-tag" style="color: var(--bubble-pink); margin-top: 5px; margin-bottom: 25px;">S/ 54.90</div>
             <button class="buy-now" onclick="addToCart('Puffy Pink', 54.90)">🔥</button>
         </div>
 
-        <div class="bento-item" id="popit" style="background: var(--electric-mint);">
+        <div class="bento-item category-popit" id="popit" style="background: var(--electric-mint);">
             <h2 style="color: var(--dark-purple);">Pop It!</h2>
             <p style="color: var(--dark-purple);">Texturas, colores dinámicos y energía urbana para todos.</p>
             <div class="price-tag" style="color: var(--electric-mint); background: var(--dark-purple); margin-bottom: 10px;">S/ 39.90</div>
             <button class="buy-now" style="color: var(--electric-mint); background: var(--dark-purple);" onclick="addToCart('Pop It!', 39.90)">✨</button>
         </div>
 
-        <div class="bento-item" id="y2k" style="background: #FFF8FA;">
+        <div class="bento-item category-y2k" id="y2k" style="background: #FFF8FA;">
             <h2 style="color: var(--dark-purple);">Y2K Art</h2>
             <p style="color: #613C64;">Vibras retro, energía moderna que complementa tu personalidad.</p>
             <div class="price-tag" style="background: var(--soft-purple); color: var(--white); margin-bottom: 10px;">S/ 44.90</div>
@@ -735,6 +795,36 @@
             alert(message);
         }
 
+        // Filtro de Categorías
+        function filterCategory(category) {
+            // Manejo de botones activos en el menú
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // Añadimos la clase active al botón pulsado (podemos buscarlo por su atributo onclick)
+            event.target.classList.add('active');
+
+            // Productos
+            const allItems = document.querySelectorAll('.bento-item');
+            allItems.forEach(item => {
+                // Filtramos por las clases de cada categoría
+                if (category === 'all') {
+                    item.classList.remove('hidden');
+                } else {
+                    if (item.classList.contains('category-' + category)) {
+                        item.classList.remove('hidden');
+                    } else {
+                        // Dejamos los elementos grandes (Footer, Nosotros, etc.) en pantalla o los ocultamos lógicamente
+                        if(!item.classList.contains('wide') && !item.classList.contains('compatibility-grid')) {
+                            item.classList.add('hidden');
+                        } else {
+                            item.classList.remove('hidden'); // Queremos que sigan visibles
+                        }
+                    }
+                }
+            });
+        }
+
         function openTermsModal() {
             const modal = document.getElementById('termsModal');
             modal.classList.add('active');
@@ -745,7 +835,7 @@
             modal.classList.remove('active');
         }
 
-        // Cerrar modal haciendo clic fuera de él
+        // Cerrar modal haciendo clic fuera del recuadro
         window.onclick = function(event) {
             const modal = document.getElementById('termsModal');
             if (event.target == modal) {
