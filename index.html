@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bubalu | Cases Trendy para Millennials en Perú</title>
+    <title>Bubalu | Cases Aesthetic & Trendy</title>
     <style>
         :root {
-            --primary: #FF6584; /* Rosa Chicle */
-            --secondary: #B088F5; /* Lavanda */
-            --accent: #A8E6CF; /* Verde Menta */
-            --bg-color: #FDFBFB;
-            --text-color: #382039; /* Morado oscuro (sin negro) */
+            --primary-pink: #FF6584; /* Rosa Chicle */
+            --electric-lavender: #B088F5; /* Lavanda */
+            --mint-green: #A8E6CF; /* Verde Menta */
+            --soft-cream: #FFFDF9; /* Fondo crema aesthetic */
+            --dark-purple: #382039; /* Morado oscuro para textos (Cero negro puro) */
             --white: #FFFFFF;
         }
 
@@ -18,283 +18,382 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Montserrat', 'Segoe UI', sans-serif;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
+            background-color: var(--soft-cream);
+            color: var(--dark-purple);
+            overflow-x: hidden;
         }
 
-        /* Navbar */
+        /* Banner de Envío Gratis */
+        .promo-banner {
+            background: linear-gradient(90deg, var(--primary-pink), var(--electric-lavender));
+            color: var(--white);
+            text-align: center;
+            padding: 0.6rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Navbar Minimalista */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 5%;
-            background: var(--white);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            padding: 1.2rem 5%;
+            background: rgba(255, 253, 249, 0.8);
+            backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             z-index: 100;
+            border-bottom: 2px solid rgba(176, 136, 245, 0.15);
         }
 
         .logo {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--primary);
-            letter-spacing: 1.5px;
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--primary-pink);
+            letter-spacing: -1px;
             text-transform: lowercase;
+            cursor: pointer;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2.5rem;
+            gap: 2rem;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: var(--text-color);
-            font-weight: 600;
+            color: var(--dark-purple);
+            font-weight: 700;
+            font-size: 0.95rem;
             transition: color 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: var(--primary);
+            color: var(--electric-lavender);
         }
 
-        /* Hero Section */
-        .hero {
-            display: flex;
+        /* Hero Section - Estilo Split Lateral */
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 85vh;
             align-items: center;
-            justify-content: space-between;
-            padding: 6rem 5%;
-            background: linear-gradient(135deg, rgba(255,101,132,0.08) 0%, rgba(176,136,245,0.08) 100%);
-            min-height: 75vh;
+            padding: 3rem 8%;
+            gap: 4rem;
         }
 
-        .hero-text {
-            max-width: 50%;
-        }
-
-        .hero-text h1 {
-            font-size: 3.5rem;
+        .hero-info h1 {
+            font-size: 4rem;
+            line-height: 1.1;
             margin-bottom: 1.5rem;
-            color: var(--text-color);
-            line-height: 1.2;
-            font-weight: 800;
+            font-weight: 900;
         }
 
-        .hero-text p {
+        .hero-info h1 span {
+            color: var(--electric-lavender);
+            position: relative;
+        }
+
+        .hero-info p {
             font-size: 1.2rem;
-            margin-bottom: 2.5rem;
             color: #5C3D5A;
+            margin-bottom: 2.5rem;
+            max-width: 480px;
         }
 
-        .btn-cta {
-            background-color: var(--primary);
+        /* Botón con efecto stickers / 3D */
+        .btn-shop {
+            background-color: var(--primary-pink);
             color: var(--white);
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
             text-decoration: none;
-            font-weight: 700;
+            padding: 1.2rem 2.8rem;
+            font-weight: 800;
             font-size: 1.1rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 16px;
             display: inline-block;
-            box-shadow: 0 4px 15px rgba(255, 101, 132, 0.3);
+            border: 3px solid var(--dark-purple);
+            box-shadow: 4px 4px 0px var(--dark-purple);
+            transition: all 0.2s ease;
         }
 
-        .btn-cta:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(255, 101, 132, 0.4);
+        .btn-shop:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px var(--dark-purple);
+            background-color: var(--electric-lavender);
         }
 
-        .hero-img {
-            max-width: 40%;
-            border-radius: 24px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+        .hero-gallery {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Frame estilo Polaroid para la foto */
+        .polaroid-frame {
+            background: var(--white);
+            padding: 1.5rem 1.5rem 4rem 1.5rem;
+            border: 3px solid var(--dark-purple);
+            border-radius: 8px;
+            box-shadow: 12px 12px 0px rgba(176, 136, 245, 0.3);
+            transform: rotate(-3deg);
+            max-width: 420px;
             width: 100%;
-            aspect-ratio: 4/5;
+        }
+
+        .polaroid-frame img {
+            width: 100%;
+            border-radius: 4px;
+            border: 2px solid var(--dark-purple);
+            aspect-ratio: 1/1;
             object-fit: cover;
         }
 
-        /* Categories Section */
-        .categories {
-            padding: 6rem 5%;
+        /* Sección de Grid de Productos */
+        .products-section {
+            padding: 6rem 8%;
+            background: var(--white);
+            border-top: 3px solid var(--dark-purple);
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 4rem;
+            font-weight: 900;
+        }
+
+        .grid-products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+        }
+
+        /* Tarjetas de Producto */
+        .product-card {
+            background: var(--soft-cream);
+            border: 3px solid var(--dark-purple);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .product-img-container {
+            width: 100%;
+            height: 320px;
+            overflow: hidden;
+            border-bottom: 3px solid var(--dark-purple);
+            position: relative;
+        }
+
+        .product-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .tag-trend {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--mint-green);
+            color: var(--dark-purple);
+            padding: 0.4rem 1rem;
+            border: 2px solid var(--dark-purple);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 800;
+        }
+
+        .product-info {
+            padding: 1.5rem;
             text-align: center;
         }
 
-        .categories h2 {
-            font-size: 2.5rem;
-            margin-bottom: 4rem;
-            color: var(--text-color);
+        .product-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
         }
 
-        .cards-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .card {
-            background: var(--white);
-            border-radius: 28px;
-            padding: 3rem 2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.06);
-        }
-
-        .card-icon {
-            font-size: 2.8rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            color: var(--text-color);
-            font-weight: 700;
-        }
-
-        .card p {
-            font-size: 0.95rem;
-            color: #5C3D5A;
-            line-height: 1.5;
+        .product-price {
+            font-size: 1.2rem;
+            color: var(--primary-pink);
+            font-weight: 900;
+            margin-bottom: 1.2rem;
         }
 
         /* Footer */
         footer {
-            background-color: #382039;
+            background-color: var(--dark-purple);
             color: #F8F4F9;
-            padding: 4rem 5%;
+            padding: 5rem 8% 3rem 8%;
             text-align: center;
+            border-top: 3px solid var(--dark-purple);
         }
 
-        .footer-text {
-            font-size: 1.2rem;
+        .footer-brand {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--primary-pink);
+            margin-bottom: 1rem;
+        }
+
+        .footer-slogan {
+            font-size: 1.1rem;
             font-style: italic;
-            margin-bottom: 2.5rem;
-            color: var(--secondary);
-            font-weight: 500;
+            color: var(--electric-lavender);
+            margin-bottom: 3rem;
         }
 
-        .social-icons {
+        .social-row {
             display: flex;
             justify-content: center;
-            gap: 1.8rem;
-            margin-bottom: 2.5rem;
+            gap: 2rem;
+            margin-bottom: 3rem;
         }
 
-        .social-icon {
-            color: var(--white);
-            font-size: 1.6rem;
-            transition: color 0.3s ease, transform 0.3s ease;
+        .social-link {
             text-decoration: none;
-            display: inline-block;
+            font-size: 1.8rem;
+            transition: transform 0.2s ease;
         }
 
-        .social-icon:hover {
-            color: var(--primary);
-            transform: translateY(-2px);
+        .social-link:hover {
+            transform: scale(1.2);
         }
 
-        .footer-rules {
-            font-size: 0.85rem;
-            color: rgba(248, 244, 249, 0.65);
-            max-width: 850px;
+        .footer-coexistence {
+            font-size: 0.8rem;
+            max-width: 800px;
             margin: 0 auto;
-            line-height: 1.6;
-            padding: 0 1rem;
+            opacity: 0.7;
+            line-height: 1.7;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
         }
 
-        /* Responsive Design */
-        @media (max-width: 900px) {
-            .hero {
-                flex-direction: column;
+        /* Adaptabilidad Móvil */
+        @media (max-width: 960px) {
+            .hero-container {
+                grid-template-columns: 1fr;
                 text-align: center;
-                gap: 3rem;
-                padding: 4rem 5%;
+                padding-top: 2rem;
+                gap: 2rem;
             }
-            .hero-text {
-                max-width: 100%;
+            .hero-info h1 {
+                font-size: 2.8rem;
             }
-            .hero-img {
-                max-width: 80%;
+            .hero-info p {
+                margin: 0 auto 2rem auto;
+            }
+            .polaroid-frame {
+                max-width: 320px;
+                transform: rotate(0deg);
             }
             .nav-links {
-                display: none; /* Simplificado para móviles o se puede adaptar */
+                display: none;
             }
         }
     </style>
 </head>
 <body>
 
+    <div class="promo-banner">
+        💖 Envío express a todo Lima Metropolitana y Provincias 🇵🇪
+    </div>
+
     <nav class="navbar">
         <div class="logo">bubalu.</div>
         <ul class="nav-links">
-            <li><a href="#">Tienda</a></li>
-            <li><a href="#">Colecciones</a></li>
-            <li><a href="#">Nosotros</a></li>
-            <li><a href="#">Contacto</a></li>
+            <li><a href="#productos">Shop</a></li>
+            <li><a href="#nosotros">Nosotras</a></li>
+            <li><a href="#comunidad">Club Bubalu</a></li>
         </ul>
     </nav>
 
-    <section class="hero">
-        <div class="hero-text">
-            <h1>Tu outfit no está completo sin tu Bubalu.</h1>
-            <p>Descubre los cases más estéticos y en tendencia en todo el Perú. Diseñados especialmente para proteger tu estilo con mucha energía.</p>
-            <a href="#" class="btn-cta">Ver la Colección ✨</a>
+    <section class="hero-container">
+        <div class="hero-info">
+            <h1>Luce tu lado más <span>Aesthetic.</span></h1>
+            <p>Los cases más instagrameables diseñados para elevar tus outfits y proteger tu celular con estilo único.</p>
+            <a href="#productos" class="btn-shop">Quiero Mi Case ✨</a>
         </div>
-        <img src="https://images.unsplash.com/photo-1601784551446-20c9e07cd2f7?auto=format&fit=crop&w=600&q=80" alt="Mirror Selfie con Case Trendy" class="hero-img">
+        <div class="hero-gallery">
+            <div class="polaroid-frame">
+                <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=600&q=80" alt="Bubalu Mirror Selfie">
+            </div>
+        </div>
     </section>
 
-    <section class="categories">
-        <h2>Shop by Trend 💅</h2>
-        <div class="cards-container">
-            <div class="card">
-                <div class="card-icon">🌸</div>
-                <h3>Y2K Nostalgia</h3>
-                <p>Estética retro, caritas felices y tonos pastel que combinan con todos tus looks del día.</p>
+    <section class="products-section" id="productos">
+        <h2 class="section-title">Nuestros Best Sellers 🔥</h2>
+        <div class="grid-products">
+            
+            <div class="product-card">
+                <div class="product-img-container">
+                    <span class="tag-trend">Y2K Style</span>
+                    <img src="https://images.unsplash.com/photo-1601784551446-20c9e07cd2f7?auto=format&fit=crop&w=500&q=80" alt="Pink Y2K Case">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Retro Pink Vibes</h3>
+                    <div class="product-price">S/ 49.90</div>
+                    <a href="#" class="btn-shop" style="padding: 0.6rem 1.5rem; font-size: 0.9rem;">Comprar</a>
+                </div>
             </div>
-            <div class="card">
-                <div class="card-icon">✨</div>
-                <h3>Clean Girl</h3>
-                <p>Minimalismo elegante, texturas mate y tonos sobrios para un toque sofisticado.</p>
+
+            <div class="product-card">
+                <div class="product-img-container">
+                    <span class="tag-trend">Clean Girl</span>
+                    <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=500&q=80" alt="Minimalist Case">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Coconut Latte Mate</h3>
+                    <div class="product-price">S/ 49.90</div>
+                    <a href="#" class="btn-shop" style="padding: 0.6rem 1.5rem; font-size: 0.9rem;">Comprar</a>
+                </div>
             </div>
-            <div class="card">
-                <div class="card-icon">☁️</div>
-                <h3>Puffy Cases</h3>
-                <p>La máxima tendencia en volumen y suavidad para el cuidado óptimo de tu teléfono.</p>
+
+            <div class="product-card">
+                <div class="product-img-container">
+                    <span class="tag-trend">Puffy Soft</span>
+                    <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=500&q=80" alt="Puffy Purple Case">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Lilac Cloud Puffy</h3>
+                    <div class="product-price">S/ 54.90</div>
+                    <a href="#" class="btn-shop" style="padding: 0.6rem 1.5rem; font-size: 0.9rem;">Comprar</a>
+                </div>
             </div>
-            <div class="card">
-                <div class="card-icon">🪞</div>
-                <h3>Mirror Cases</h3>
-                <p>El aliado perfecto para retocar tu makeup mientras luces un estilo increíble.</p>
-            </div>
+
         </div>
     </section>
 
     <footer>
-        <div class="footer-text">"Libertad y estilo en cada detalle."</div>
-        <div class="social-icons">
-            <a href="#" class="social-icon">📸</a>
-            <a href="#" class="social-icon">💬</a>
-            <a href="#" class="social-icon">🛒</a>
+        <div class="footer-brand">bubalu.</div>
+        <div class="footer-slogan">"Libertad y estilo en cada detalle."</div>
+        <div class="social-row">
+            <a href="#" class="social-link">📸</a>
+            <a href="#" class="social-link">🎵</a>
+            <a href="#" class="social-link">💬</a>
         </div>
-        <div class="footer-rules">
-            <strong>Reglas de Coexistencia:</strong> 
-            1) Estilo antes que nada: Si no es estético, no se publica. 
-            2) Comunicación Directa: Hablamos de "tú" y usamos emojis, pero mantenemos la profesionalidad en el servicio. 
-            3) Comunidad: El cliente no solo compra un case, entra al "Club Bubalu".
+        <div class="footer-coexistence">
+            <strong>Reglas de Coexistencia de la Marca:</strong><br>
+            1. Estilo antes que nada: Si no es estético, no se publica.<br>
+            2. Comunicación Directa: Hablamos de "tú" y usamos emojis, pero mantenemos la profesionalidad en el servicio.<br>
+            3. Comunidad: El cliente no solo compra un case, entra al "Club Bubalu".
         </div>
     </footer>
 
