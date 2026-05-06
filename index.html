@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bubalu | Cases Trendy para Millennials y Gen Z</title>
+    <title>Bubalu | Catálogo de Cases Trendy 2026</title>
     <style>
         :root {
             --bubble-pink: #FF85A2;
             --soft-purple: #D4ADFC;
             --electric-mint: #53E0BC;
-            --dark-purple: #4A264D; 
+            --dark-purple: #4A264D;
             --white: #FFFFFF;
             --bg-color: #FDF4F7;
             --glass: rgba(255, 255, 255, 0.75);
@@ -30,7 +30,6 @@
             padding-top: 140px;
         }
 
-        /* Header Dinámico y Barra de Navegación */
         header {
             position: fixed;
             top: 20px;
@@ -86,7 +85,6 @@
             color: var(--bubble-pink);
         }
 
-        /* Menú Desplegable (Dropdown) */
         .dropdown {
             position: relative;
             display: inline-block;
@@ -171,10 +169,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
-        /* Categorías y Filtros */
         .filter-bar {
             grid-column: span 4;
             display: flex;
@@ -205,7 +202,6 @@
             border-color: var(--bubble-pink);
         }
 
-        /* Contenedor Principal */
         .container {
             max-width: 1100px;
             margin: 0 auto;
@@ -315,7 +311,7 @@
             font-weight: 800;
             display: inline-block;
             font-size: 0.9rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         }
 
         .buy-now {
@@ -416,7 +412,6 @@
             color: var(--white);
         }
 
-        /* Enlaces e interacciones */
         .terms-link {
             display: block;
             margin-top: 18px;
@@ -431,7 +426,6 @@
             color: var(--dark-purple);
         }
 
-        /* Modal */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -573,7 +567,6 @@
             border: 1px solid rgba(255, 133, 162, 0.2);
         }
 
-        /* Animaciones */
         @keyframes fadeInDown {
             from { opacity: 0; transform: translate(-50%, -30px); }
             to { opacity: 1; transform: translate(-50%, 0); }
@@ -594,7 +587,6 @@
             100% { border-color: var(--soft-purple); box-shadow: 0 0 25px rgba(212, 173, 252, 0.3); }
         }
 
-        /* Responsive */
         @media (max-width: 950px) {
             .container {
                 grid-template-columns: repeat(2, 1fr);
@@ -604,7 +596,7 @@
                 grid-column: span 2;
             }
             .nav-links {
-                display: none; /* Simplificado para móviles */
+                display: none;
             }
             .compatibility-grid {
                 flex-direction: column;
@@ -668,33 +660,89 @@
             <button class="filter-btn" onclick="filterCategory('y2k')">Y2K Retro</button>
         </div>
 
-        <div class="bento-item large category-limited" id="large" style="background-image: linear-gradient(to bottom, rgba(212, 173, 252, 0.3), rgba(74, 38, 77, 0.5)), url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80');">
-            <span class="badge">Nuevo Lanzamiento 2026</span>
+        <div class="bento-item large category-limited" id="limited-unisex" style="background-image: linear-gradient(to bottom, rgba(212, 173, 252, 0.3), rgba(74, 38, 77, 0.5)), url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80');">
+            <span class="badge">Nuevo 2026</span>
             <h2>Colección Unisex</h2>
-            <p>Cases protectores diseñados para quienes no temen destacar. Estilo y máxima durabilidad para el día a día.</p>
+            <p>Cases protectores diseñados para quienes no temen destacar. Estilo y máxima durabilidad para el día a día, adaptados para todos.</p>
             <div class="price-tag">S/ 49.90</div>
             <button class="buy-now" onclick="addToCart('Colección Unisex', 49.90)">🛍️</button>
         </div>
 
-        <div class="bento-item tall category-puffy" id="tall" style="background-image: url('https://images.unsplash.com/photo-1601784551446-20c9e07cd2f7?auto=format&fit=crop&w=600&q=80');">
+        <div class="bento-item category-limited" id="limited-aurora" style="background: var(--soft-purple);">
+            <h2 style="color: var(--dark-purple);">Aurora Borealis</h2>
+            <p style="color: var(--dark-purple);">Degradé de luces que le da un toque único y mágico a tu celular.</p>
+            <div class="price-tag" style="background: var(--dark-purple); color: var(--soft-purple); margin-bottom: 10px;">S/ 59.90</div>
+            <button class="buy-now" style="background: var(--dark-purple); color: var(--soft-purple);" onclick="addToCart('Aurora Borealis', 59.90)">✨</button>
+        </div>
+
+        <div class="bento-item category-limited" id="limited-sunset" style="background-image: linear-gradient(to bottom, rgba(255, 133, 162, 0.4), rgba(212, 173, 252, 0.4));">
+            <h2 style="color: var(--dark-purple);">Golden Sunset</h2>
+            <p style="color: var(--dark-purple);">Tonos cálidos que capturan el mejor atardecer y acompañan tu rutina.</p>
+            <div class="price-tag" style="background: var(--white); color: var(--bubble-pink); margin-bottom: 10px;">S/ 55.90</div>
+            <button class="buy-now" onclick="addToCart('Golden Sunset', 55.90)">🌅</button>
+        </div>
+
+        <div class="bento-item tall category-puffy" id="puffy-pink" style="background-image: url('https://images.unsplash.com/photo-1601784551446-20c9e07cd2f7?auto=format&fit=crop&w=600&q=80');">
             <h2>Puffy Pink</h2>
             <p>Suavidad y volumen en un diseño cómodo que protege cada caída.</p>
             <div class="price-tag" style="color: var(--bubble-pink); margin-top: 5px; margin-bottom: 25px;">S/ 54.90</div>
             <button class="buy-now" onclick="addToCart('Puffy Pink', 54.90)">🔥</button>
         </div>
 
-        <div class="bento-item category-popit" id="popit" style="background: var(--electric-mint);">
-            <h2 style="color: var(--dark-purple);">Pop It!</h2>
-            <p style="color: var(--dark-purple);">Texturas, colores dinámicos y energía urbana para todos.</p>
-            <div class="price-tag" style="color: var(--electric-mint); background: var(--dark-purple); margin-bottom: 10px;">S/ 39.90</div>
-            <button class="buy-now" style="color: var(--electric-mint); background: var(--dark-purple);" onclick="addToCart('Pop It!', 39.90)">✨</button>
+        <div class="bento-item category-puffy" id="puffy-lavender" style="background: #FDF4F7; border: 2px solid var(--soft-purple);">
+            <h2 style="color: var(--dark-purple);">Puffy Lavender</h2>
+            <p style="color: #613C64;">Efecto acolchado en un tono neutro y fresco que mantiene tu estilo.</p>
+            <div class="price-tag" style="background: var(--soft-purple); color: var(--white); margin-bottom: 10px;">S/ 54.90</div>
+            <button class="buy-now" onclick="addToCart('Puffy Lavender', 54.90)">💜</button>
         </div>
 
-        <div class="bento-item category-y2k" id="y2k" style="background: #FFF8FA;">
+        <div class="bento-item category-puffy" id="puffy-mint" style="background: #F8FAF9; border: 2px solid var(--electric-mint);">
+            <h2 style="color: var(--dark-purple);">Puffy Mint</h2>
+            <p style="color: #613C64;">Frescura y volumen acolchado que destaca en todos lados.</p>
+            <div class="price-tag" style="background: var(--electric-mint); color: var(--dark-purple); margin-bottom: 10px;">S/ 54.90</div>
+            <button class="buy-now" style="background: var(--electric-mint); color: var(--dark-purple);" onclick="addToCart('Puffy Mint', 54.90)">🌿</button>
+        </div>
+
+        <div class="bento-item category-popit" id="popit-basic" style="background: var(--electric-mint);">
+            <h2 style="color: var(--dark-purple);">Pop It! Classic</h2>
+            <p style="color: var(--dark-purple);">Texturas, colores dinámicos y energía urbana para todos.</p>
+            <div class="price-tag" style="color: var(--electric-mint); background: var(--dark-purple); margin-bottom: 10px;">S/ 39.90</div>
+            <button class="buy-now" style="color: var(--electric-mint); background: var(--dark-purple);" onclick="addToCart('Pop It! Classic', 39.90)">✨</button>
+        </div>
+
+        <div class="bento-item category-popit" id="popit-rainbow" style="background: var(--white); border: 2px solid #D4ADFC;">
+            <h2 style="color: var(--dark-purple);">Pop It! Rainbow</h2>
+            <p style="color: #613C64;">Colores vibrantes en la parte posterior con tacto interactivo y seguro.</p>
+            <div class="price-tag" style="background: var(--bubble-pink); color: var(--white); margin-bottom: 10px;">S/ 42.90</div>
+            <button class="buy-now" onclick="addToCart('Pop It! Rainbow', 42.90)">🌈</button>
+        </div>
+
+        <div class="bento-item category-popit" id="popit-pastel" style="background: #FFF0F4; border: 2px solid #FF85A2;">
+            <h2 style="color: var(--dark-purple);">Bubble Pop Pastel</h2>
+            <p style="color: #613C64;">Burbujas suaves que ayudan a liberar el estrés diario.</p>
+            <div class="price-tag" style="background: var(--electric-mint); color: var(--dark-purple); margin-bottom: 10px;">S/ 40.90</div>
+            <button class="buy-now" onclick="addToCart('Bubble Pop Pastel', 40.90)">🎀</button>
+        </div>
+
+        <div class="bento-item category-y2k" id="y2k-art" style="background: #FFF8FA;">
             <h2 style="color: var(--dark-purple);">Y2K Art</h2>
             <p style="color: #613C64;">Vibras retro, energía moderna que complementa tu personalidad.</p>
             <div class="price-tag" style="background: var(--soft-purple); color: var(--white); margin-bottom: 10px;">S/ 44.90</div>
             <button class="buy-now" onclick="addToCart('Y2K Art', 44.90)">🎵</button>
+        </div>
+
+        <div class="bento-item category-y2k" id="y2k-cyber" style="background: #F0E6FF;">
+            <h2 style="color: var(--dark-purple);">Cyber Star Y2K</h2>
+            <p style="color: #613C64;">Estrellas brillantes y gráficos metálicos que reviven los años 2000.</p>
+            <div class="price-tag" style="background: var(--bubble-pink); color: var(--white); margin-bottom: 10px;">S/ 45.90</div>
+            <button class="buy-now" onclick="addToCart('Cyber Star Y2K', 45.90)">🌟</button>
+        </div>
+
+        <div class="bento-item category-y2k" id="y2k-butterfly" style="background: var(--white); border: 2px solid #D4ADFC;">
+            <h2 style="color: var(--dark-purple);">Retro Butterfly</h2>
+            <p style="color: #613C64;">Mariposas holográficas y detalles clásicos para tu teléfono.</p>
+            <div class="price-tag" style="background: var(--electric-mint); color: var(--dark-purple); margin-bottom: 10px;">S/ 46.90</div>
+            <button class="buy-now" onclick="addToCart('Retro Butterfly', 46.90)">🦋</button>
         </div>
 
         <div class="compatibility-grid">
@@ -766,7 +814,7 @@
 
         <div class="rules-container">
             <h4>Reglas de Coexistencia</h4>
-            <p>Valores que guían nuestra marca para construir una verdadera comunidad unida.</p>
+            <p>Valores que guían nuestra marca para construir una verdadera comunidad unida para adolescentes.</p>
             <ul class="rules-list">
                 <li>✨ Estilo antes que nada</li>
                 <li>🤝 Comunicación Directa</li>
@@ -795,30 +843,26 @@
             alert(message);
         }
 
-        // Filtro de Categorías
         function filterCategory(category) {
-            // Manejo de botones activos en el menú
             const buttons = document.querySelectorAll('.filter-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
-            
-            // Añadimos la clase active al botón pulsado (podemos buscarlo por su atributo onclick)
-            event.target.classList.add('active');
 
-            // Productos
+            if (typeof event !== 'undefined' && event) {
+                event.target.classList.add('active');
+            }
+
             const allItems = document.querySelectorAll('.bento-item');
             allItems.forEach(item => {
-                // Filtramos por las clases de cada categoría
                 if (category === 'all') {
                     item.classList.remove('hidden');
                 } else {
                     if (item.classList.contains('category-' + category)) {
                         item.classList.remove('hidden');
                     } else {
-                        // Dejamos los elementos grandes (Footer, Nosotros, etc.) en pantalla o los ocultamos lógicamente
-                        if(!item.classList.contains('wide') && !item.classList.contains('compatibility-grid')) {
+                        if (!item.classList.contains('wide') && !item.classList.contains('compatibility-grid')) {
                             item.classList.add('hidden');
                         } else {
-                            item.classList.remove('hidden'); // Queremos que sigan visibles
+                            item.classList.remove('hidden');
                         }
                     }
                 }
@@ -835,7 +879,6 @@
             modal.classList.remove('active');
         }
 
-        // Cerrar modal haciendo clic fuera del recuadro
         window.onclick = function(event) {
             const modal = document.getElementById('termsModal');
             if (event.target == modal) {
